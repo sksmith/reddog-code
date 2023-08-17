@@ -1,26 +1,26 @@
 apiVersion: apps/v1
 kind: Deployment
 metadata:
-  name: accounting-service
+  name: retail-order-service
   namespace: reddog
   labels:
-    app: accounting-service
+    app: retail-order-service
 spec:
   replicas: 1
   selector:
     matchLabels:
-      app: accounting-service
+      app: retail-order-service
   template:
     metadata:
       labels:
-        app: accounting-service
+        app: retail-order-service
       annotations:
         dapr.io/enabled: 'true'
-        dapr.io/app-id: accounting-service
+        dapr.io/app-id: retail-order-service
         dapr.io/app-port: '80'
     spec:
       containers:
-        - name: accounting-service
+        - name: retail-order-service
           image: seanacr.azurecr.io/azure/reddog-retail-demo/reddog-retail-order-service:latest
           ports:
             - containerPort: 80
